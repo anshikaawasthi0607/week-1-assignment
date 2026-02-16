@@ -1,6 +1,6 @@
 # ✨ Infinite Nested Accordion
 
-A modern, interactive React application featuring infinitely nested accordions with smooth animations and infinite scroll functionality. Built with React 19 and Vite for optimal performance.
+A modern, interactive React application featuring infinitely nested accordions with smooth animations and infinite scroll functionality. Built with React 19, Vite and CSS for optimal performance.
 
 ## 🚀 Features
 
@@ -37,7 +37,7 @@ npm --version
 
 1. **Clone the repository**
    ```bash
-   git clone <your-repository-url>
+   git clone https://github.com/anshikaawasthi0607/week-1-assignment.git
    cd nested-accordian
    ```
 
