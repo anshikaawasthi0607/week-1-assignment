@@ -1,0 +1,204 @@
+/* Main accordion container with scroll */
+.accordion {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  max-height: 600px; 
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar styling */
+.accordion::-webkit-scrollbar {
+  width: 10px;
+}
+
+.accordion::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  margin: 10px 0;
+}
+
+.accordion::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  transition: background 0.3s ease;
+}
+
+.accordion::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* Accordion item with nested indentation */
+.accordion-item {
+  margin-left: 0;
+  margin-bottom: 10px;
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Nested items get indented */
+.accordion-content .accordion-item {
+  margin-left: 24px;
+  margin-top: 8px;
+}
+
+/* Accordion title styling */
+.accordion-title {
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  padding: 20px 20px;
+  margin: 0;
+  cursor: pointer;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  font-size: 15px;
+  color: #2d3748;
+  display: flex;
+  align-items: center;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: 2px solid transparent;
+}
+
+/* Add arrow indicator */
+.accordion-title::before {
+  content: "▶";
+  margin-right: 12px;
+  font-size: 12px;
+  transition: transform 0.3s ease;
+  color: #667eea;
+}
+
+/* Rotate arrow when open */
+.accordion-item:has(.accordion-content) > .accordion-title::before {
+  transform: rotate(90deg);
+}
+
+/* Hover effect */
+.accordion-title:hover {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  transform: translateX(4px);
+  border-color: #667eea;
+  box-shadow: 0 4px 16px rgba(102, 126, 234, 0.2);
+}
+
+/* Active/Focus state */
+.accordion-title:active {
+  transform: translateX(2px) scale(0.98);
+}
+
+/* Accordion content area */
+.accordion-content {
+  padding: 12px 0 0 0;
+  border-left: 3px solid rgba(102, 126, 234, 0.3);
+  margin-left: 20px;
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    max-height: 0;
+  }
+  to {
+    opacity: 1;
+    max-height: 1000px;
+  }
+}
+
+/* Content paragraph styling */
+.accordion-content > p {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 12px 16px;
+  margin: 0 0 12px 12px;
+  border-radius: 8px;
+  color: #4a5568;
+  font-size: 14px;
+  line-height: 1.6;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  border-left: 4px solid #667eea;
+}
+
+/* Nested level color variations */
+.accordion-content .accordion-content .accordion-title {
+  background: linear-gradient(135deg, #fef5ff 0%, #f3e8ff 100%);
+}
+
+.accordion-content .accordion-content .accordion-content .accordion-title {
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  color: #78350f;
+}
+
+.accordion-content .accordion-content .accordion-content .accordion-content .accordion-title {
+  background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+  color: #1e3a8a;
+}
+
+/* Deep nesting - cycle back */
+.accordion-content .accordion-content .accordion-content .accordion-content .accordion-content .accordion-title {
+  background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
+  color: #14532d;
+}
+
+.accordion-content .accordion-content .accordion-content .accordion-content .accordion-content .accordion-content .accordion-title {
+  background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+  color: #7f1d1d;
+}
+
+/* Accessibility - keyboard focus */
+.accordion-title:focus {
+  outline: 3px solid #667eea;
+  outline-offset: 2px;
+}
+
+/* Infinite Scroll Loading Trigger */
+.loading-trigger {
+  height: 20px;
+  margin: 10px 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Responsive design */
+@media (max-width: 900px) {
+  .accordion {
+    max-width: 90%;
+    padding: 15px;
+  }
+
+  .accordion-title {
+    padding: 14px 16px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 600px) {
+  .accordion {
+    max-width: 95%;
+    padding: 10px;
+    max-height: 500px;
+  }
+
+  .accordion-title {
+    padding: 12px 14px;
+    font-size: 13px;
+  }
+
+  .accordion-content .accordion-item {
+    margin-left: 16px;
+  }
+}
